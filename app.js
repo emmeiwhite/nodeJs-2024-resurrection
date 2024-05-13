@@ -1,3 +1,10 @@
-const amount = Math.floor(Math.random() * 15)
+console.log(__dirname)
+let num = 0
+let interval = setInterval(() => {
+  console.log(num)
+  num++
 
-amount > 10 ? console.log(`number is > 10`) : console.log(`number is < 10`)
+  if (num > 10) {
+    clearInterval(interval)
+  }
+}, 1000)
