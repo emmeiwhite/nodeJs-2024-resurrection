@@ -32,3 +32,5 @@ readFile('./content/first.txt', 'utf8', (error, result1) => {
     )
   })
 })
+
+// Here we notice a call back hell! Everything is node surrounds around callbacks which we'll later handle with promises and async/await for better code readability
