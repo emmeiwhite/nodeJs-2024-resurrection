@@ -2,7 +2,9 @@ const { readFile, writeFile } = require('fs')
 
 // Now, we will read and write to file asynchronously. And for this we'll need to provide a callback once we are done!
 
-console.log('First')
+// a) This runs first
+console.log('Code Starts')
+// c) This code runs asynchronously
 readFile('./content/first.txt', 'utf8', (error, result1) => {
   if (error) {
     return
@@ -28,11 +30,11 @@ readFile('./content/first.txt', 'utf8', (error, result1) => {
           return
         }
 
-        console.log(result3)
+        console.log('Successfully did file write asynchronously')
       }
     )
   })
 })
 
-console.log('last')
+console.log('Next Task Starts')
 // Here we notice a call back hell! Everything is node surrounds around callbacks which we'll later handle with promises and async/await for better code readability
