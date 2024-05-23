@@ -1,40 +1,15 @@
-// require('./a-eventloop-examples/01-blocking-code')
-// require('./a-eventloop-examples/02-non-blocking-code.js')
+// EVENT DRIVEN PROGRAMMING
 
-const { readFile } = require('fs')
+const EventEmitter = require('events')
 
-// We'll create a promise
-const getText = path => {
-  return new Promise((resolve, reject) => {
-    readFile(path, 'utf8', (err, data) => {
-      if (err) {
-        reject(err)
-        return
-      } else {
-        resolve(data)
-      }
-    })
-  })
-}
-/* --- Promise based approach --
-getText('./content/first.txt')
-  .then(data => {
-    console.log(`PROMISE RESOLVED: \n ${data}`)
-  })
-  .catch(err => {
-    console.log(`PROMISE REJECTED: \n ${err}`)
-  })
----*/
+const customEmitter = new EventEmitter()
 
-const start = async () => {
-  try {
-    const firstText = await getText('./content/first.txt')
-    const secondText = await getText('./content/second.txt')
+// on and emit:
+// on: listen for an event
+// emit: emit the event
 
-    console.log(firstText, secondText)
-  } catch (error) {
-    console.log(error)
-  }
-}
+customEmitter.on('response', () => {
+  console.log(`data received`)
+})
 
-start()
+customEmitter.emit('response')
