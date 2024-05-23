@@ -4,6 +4,7 @@ const server = http.createServer((req, res) => {
   if (req.url === '/') {
     res.end(`<h1>Welcome to the homepage!</h1>`)
   } else if (req.url === '/about') {
+    // This is the blocking code, which blocks even the other requests, that's why we need to make sure to always use callback strategy
     for (let i = 0; i < 1000; i++) {
       for (let j = 1; j < 1000; j++) {
         console.log(i, j)
