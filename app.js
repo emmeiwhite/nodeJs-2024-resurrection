@@ -16,7 +16,7 @@ const getText = path => {
     })
   })
 }
-
+/* --- Promise based approach --
 getText('./content/first.txt')
   .then(data => {
     console.log(`PROMISE RESOLVED: \n ${data}`)
@@ -24,3 +24,17 @@ getText('./content/first.txt')
   .catch(err => {
     console.log(`PROMISE REJECTED: \n ${err}`)
   })
+---*/
+
+const start = async () => {
+  try {
+    const firstText = await getText('./content/first.txt')
+    const secondText = await getText('./content/second.txt')
+
+    console.log(firstText, secondText)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+start()
